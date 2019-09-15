@@ -10,12 +10,12 @@ class Solution:
     # 返回构造的TreeNode根节点
     def reConstructBinaryTree(self, pre, tin):
         # write code here
-        if pre == None:
+        if pre == None or len(pre)==0 or tin==None or len(tin)==0:
             return None
         else:
             root = TreeNode(pre[0])
             root.left = self.reConstructBinaryTree(pre[1: tin.index(pre[0])+1], tin[: tin.index(pre[0])])
-            root.right = self.reConstructBinaryTree(pre[tin.index(pre[0])+1: ], tin[tin.index(pre[0])+1:])
+            root.right = self.reConstructBinaryTree(pre[tin.index(pre[0])+1:], tin[tin.index(pre[0])+1:])
         return root
 
     def printTree(self, node):
